@@ -82,7 +82,7 @@ TESTS =
 BENCHMARKS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += certuriumd
+  bin_PROGRAMS += yantumd
 endif
 
 if BUILD_BITCOIN_NODE
@@ -90,14 +90,14 @@ if BUILD_BITCOIN_NODE
 endif
 
 if BUILD_BITCOIN_CLI
-  bin_PROGRAMS += certurium-cli
+  bin_PROGRAMS += yantum-cli
 endif
 if BUILD_BITCOIN_TX
-  bin_PROGRAMS += certurium-tx
+  bin_PROGRAMS += yantum-tx
 endif
 if ENABLE_WALLET
 if BUILD_BITCOIN_WALLET
-  bin_PROGRAMS += certurium-wallet
+  bin_PROGRAMS += yantum-wallet
 endif
 endif
 
@@ -579,7 +579,7 @@ libbitcoin_cli_a_SOURCES = \
 nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# certuriumd & certurium-node binaries #
+# yantumd & yantum-node binaries #
 bitcoin_daemon_sources = bitcoind.cpp
 bitcoin_bin_cppflags = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 bitcoin_bin_cxxflags = $(AM_CXXFLAGS) $(PIE_FLAGS)
@@ -604,48 +604,48 @@ bitcoin_bin_ldadd = \
 
 bitcoin_bin_ldadd += $(BOOST_LIBS) $(BDB_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(SQLITE_LIBS)
 
-certuriumd_SOURCES = $(bitcoin_daemon_sources)
-certuriumd_CPPFLAGS = $(bitcoin_bin_cppflags)
-certuriumd_CXXFLAGS = $(bitcoin_bin_cxxflags)
-certuriumd_LDFLAGS = $(bitcoin_bin_ldflags)
-certuriumd_LDADD = $(LIBBITCOIN_SERVER) $(bitcoin_bin_ldadd)
+yantumd_SOURCES = $(bitcoin_daemon_sources)
+yantumd_CPPFLAGS = $(bitcoin_bin_cppflags)
+yantumd_CXXFLAGS = $(bitcoin_bin_cxxflags)
+yantumd_LDFLAGS = $(bitcoin_bin_ldflags)
+yantumd_LDADD = $(LIBBITCOIN_SERVER) $(bitcoin_bin_ldadd)
 
-certurium_node_SOURCES = $(bitcoin_daemon_sources)
-certurium_node_CPPFLAGS = $(bitcoin_bin_cppflags)
-certurium_node_CXXFLAGS = $(bitcoin_bin_cxxflags)
-certurium_node_LDFLAGS = $(bitcoin_bin_ldflags)
-certurium_node_LDADD = $(LIBBITCOIN_SERVER) $(bitcoin_bin_ldadd)
+yantum_node_SOURCES = $(bitcoin_daemon_sources)
+yantum_node_CPPFLAGS = $(bitcoin_bin_cppflags)
+yantum_node_CXXFLAGS = $(bitcoin_bin_cxxflags)
+yantum_node_LDFLAGS = $(bitcoin_bin_ldflags)
+yantum_node_LDADD = $(LIBBITCOIN_SERVER) $(bitcoin_bin_ldadd)
 
-# certurium-cli binary #
-certurium_cli_SOURCES = bitcoin-cli.cpp
-certurium_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-certurium_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-certurium_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# yantum-cli binary #
+yantum_cli_SOURCES = bitcoin-cli.cpp
+yantum_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+yantum_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+yantum_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-certurium_cli_SOURCES += bitcoin-cli-res.rc
+yantum_cli_SOURCES += bitcoin-cli-res.rc
 endif
 
-certurium_cli_LDADD = \
+yantum_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO)
 
-certurium_cli_LDADD += $(BOOST_LIBS) $(EVENT_LIBS)
+yantum_cli_LDADD += $(BOOST_LIBS) $(EVENT_LIBS)
 #
 
-# certurium-tx binary #
-certurium_tx_SOURCES = bitcoin-tx.cpp
-certurium_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-certurium_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-certurium_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# yantum-tx binary #
+yantum_tx_SOURCES = bitcoin-tx.cpp
+yantum_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+yantum_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+yantum_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-certurium_tx_SOURCES += bitcoin-tx-res.rc
+yantum_tx_SOURCES += bitcoin-tx-res.rc
 endif
 
-certurium_tx_LDADD = \
+yantum_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -653,18 +653,18 @@ certurium_tx_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-certurium_tx_LDADD += $(BOOST_LIBS)
+yantum_tx_LDADD += $(BOOST_LIBS)
 #
 
-# certurium-wallet binary #
-certurium_wallet_SOURCES = bitcoin-wallet.cpp
-certurium_wallet_CPPFLAGS = $(bitcoin_bin_cppflags)
-certurium_wallet_CXXFLAGS = $(bitcoin_bin_cxxflags)
-certurium_wallet_LDFLAGS = $(bitcoin_bin_ldflags)
-certurium_wallet_LDADD = $(LIBBITCOIN_WALLET_TOOL) $(bitcoin_bin_ldadd)
+# yantum-wallet binary #
+yantum_wallet_SOURCES = bitcoin-wallet.cpp
+yantum_wallet_CPPFLAGS = $(bitcoin_bin_cppflags)
+yantum_wallet_CXXFLAGS = $(bitcoin_bin_cxxflags)
+yantum_wallet_LDFLAGS = $(bitcoin_bin_ldflags)
+yantum_wallet_LDADD = $(LIBBITCOIN_WALLET_TOOL) $(bitcoin_bin_ldadd)
 
 if TARGET_WINDOWS
-certurium_wallet_SOURCES += bitcoin-wallet-res.rc
+yantum_wallet_SOURCES += bitcoin-wallet-res.rc
 endif
 #
 

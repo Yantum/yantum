@@ -42,7 +42,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     const char* pszTimestamp = "Edward Snowden says he's behind NSA leaks - CNN - June 10 2013";
-    const CScript genesisOutputScript = CScript() << ParseHex("03feeffdf05350f731f093c6e61a78c16d2403d86bcbdf8510f778f01f91ad7b5b") << OP_CHECKSIG;
+    const CScript genesisOutputScript = CScript() << ParseHex("039e3a8579a56b7cb54e337b7c34608fa7bf68793d79d6431c3660666bcb5f1d2b") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -75,7 +75,7 @@ public:
         consensus.powLimit = uint256S("0000007fffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 60; // one minute
         consensus.nPowTargetSpacing = 60;
-        consensus.checkpointPubKey = "03a27bcd876ccdfacf71c8d62a82e9c37174dfadb3129cc1b06171069bb7f76b26";
+        consensus.checkpointPubKey = "036dd5e5acbb30262b150ecc6cf96aa6631ee2b792f8015fa1cdf0a3bdf16d45ee";
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 15120; // 75% of 20160
@@ -89,29 +89,29 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].bit = 2;
         consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].nStartTime = Consensus::BIP9Deployment::ALWAYS_ACTIVE;
         consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].nTimeout = Consensus::BIP9Deployment::NO_TIMEOUT;
-        consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].min_activation_height = 611910; // Approximately December 6th, 2021
+        consensus.vDeployments[Consensus::DEPLOYMENT_TAPROOT].min_activation_height = 71924; // Approximately January 10th, 2021
 
         consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000000000000eeeeeeee");
-        consensus.defaultAssumeValid = uint256S("0xb1700f9b96da798fe02a28b1d05aa30ce8ea80115e4ace9bfdc43e86930ea8ea");
+        consensus.defaultAssumeValid = uint256S("0xa988da6cf4276146d5385f6e8d24b6e5a1d6d1cb84297c27a3c3418c4dc07e6a");
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0xfb;
-        pchMessageStart[1] = 0xc1;
-        pchMessageStart[2] = 0xb8;
-        pchMessageStart[3] = 0xdc;
-        nDefaultPort = 13580;
+        pchMessageStart[0] = 0x85;
+        pchMessageStart[1] = 0xe5;
+        pchMessageStart[2] = 0xce;
+        pchMessageStart[3] = 0xbf;
+        nDefaultPort = 13610;
         nPruneAfterHeight = 100000;
         m_assumed_blockchain_size = 350;
         m_assumed_chain_state_size = 6;
 
-        genesis = CreateGenesisBlock(1585921268, 20253191, 0x1d7fffff, 1, 11922745 * COIN);
+        genesis = CreateGenesisBlock(1620124346, 13149988, 0x1d7fffff, 1, 11896740 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0xb1700f9b96da798fe02a28b1d05aa30ce8ea80115e4ace9bfdc43e86930ea8ea"));
-        assert(genesis.hashMerkleRoot == uint256S("0xd3ac893bf5887a7365bf35d67abcf037faa194aed9f1709e42958933bd8bd70f"));
+        assert(consensus.hashGenesisBlock == uint256S("0xa988da6cf4276146d5385f6e8d24b6e5a1d6d1cb84297c27a3c3418c4dc07e6a"));
+        assert(genesis.hashMerkleRoot == uint256S("0x3ad84bb5c63f344f168aeef2027a226488e1a6da20027aaf1cf0936f209aa8a4"));
 
         // Note that of those which support the service bits prefix, most only support a subset of
         // possible options.
@@ -171,7 +171,7 @@ public:
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 60; // one minute
         consensus.nPowTargetSpacing = 60;
-        consensus.checkpointPubKey = "03a27bcd876ccdfacf71c8d62a82e9c37174dfadb3129cc1b06171069bb7f76b26";
+        consensus.checkpointPubKey = "036dd5e5acbb30262b150ecc6cf96aa6631ee2b792f8015fa1cdf0a3bdf16d45ee";
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 375; // 75% for testchains
@@ -329,8 +329,8 @@ public:
 
         genesis = CreateGenesisBlock(1598918400, 52613770, 0x1e0377ae, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x7079dad8a3bd6a13cd493604d5270e027ed2e76c8a25390417556ca26c5473db"));
-        assert(genesis.hashMerkleRoot == uint256S("0x5d4da6f65eba8235a3c248a4c1a9b4ae7762552dd4afbb409861896181babd34"));
+        assert(consensus.hashGenesisBlock == uint256S("0x69291b76062f440f7a433b54cac74d3b418955c786e19c5c8cb2c0f87f57d6c9"));
+        assert(genesis.hashMerkleRoot == uint256S("0x46a84bc287c6e0621cd31ad9c45b0d2b25c4117a92aa2d37319a6b2de1c5200e"));
 
         vFixedSeeds.clear();
 
@@ -370,7 +370,7 @@ public:
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 60; // one minute
         consensus.nPowTargetSpacing = 60;
-        consensus.checkpointPubKey = "02dd65a7949c22c405c551637e1e5fdf813e378a61117e6f977c86e09f55a971ca";
+        consensus.checkpointPubKey = "036dd5e5acbb30262b150ecc6cf96aa6631ee2b792f8015fa1cdf0a3bdf16d45ee";
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains

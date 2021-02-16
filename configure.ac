@@ -21,11 +21,11 @@ if test "x$PKG_CONFIG" = x; then
   AC_MSG_ERROR([pkg-config not found])
 fi
 
-BITCOIN_DAEMON_NAME=certuriumd
-BITCOIN_GUI_NAME=certurium-qt
-BITCOIN_CLI_NAME=certurium-cli
-BITCOIN_TX_NAME=certurium-tx
-BITCOIN_WALLET_TOOL_NAME=certurium-wallet
+BITCOIN_DAEMON_NAME=yantumd
+BITCOIN_GUI_NAME=yantum-qt
+BITCOIN_CLI_NAME=yantum-cli
+BITCOIN_TX_NAME=yantum-tx
+BITCOIN_WALLET_TOOL_NAME=yantum-wallet
 
 dnl Unless the user specified ARFLAGS, force it to be cr
 AC_ARG_VAR(ARFLAGS, [Flags for the archiver, defaults to <cr> if not set])
