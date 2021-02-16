@@ -27,17 +27,17 @@ if test -n "$PKG_CONFIG_LIBDIR"; then
   PKG_CONFIG="env PKG_CONFIG_LIBDIR=$PKG_CONFIG_LIBDIR $PKG_CONFIG"
 fi
 
-BITCOIN_DAEMON_NAME=certuriumd
-BITCOIN_GUI_NAME=certurium-qt
-BITCOIN_TEST_NAME=test_certurium
-BITCOIN_CLI_NAME=certurium-cli
-BITCOIN_TX_NAME=certurium-tx
-BITCOIN_UTIL_NAME=certurium-util
-BITCOIN_CHAINSTATE_NAME=certurium-chainstate
-BITCOIN_WALLET_TOOL_NAME=certurium-wallet
+BITCOIN_DAEMON_NAME=yantumd
+BITCOIN_GUI_NAME=yantum-qt
+BITCOIN_TEST_NAME=test_yantum
+BITCOIN_CLI_NAME=yantum-cli
+BITCOIN_TX_NAME=yantum-tx
+BITCOIN_UTIL_NAME=yantum-util
+BITCOIN_CHAINSTATE_NAME=yantum-chainstate
+BITCOIN_WALLET_TOOL_NAME=yantum-wallet
 dnl Multi Process
-BITCOIN_MP_NODE_NAME=certurium-node
-BITCOIN_MP_GUI_NAME=certurium-gui
+BITCOIN_MP_NODE_NAME=yantum-node
+BITCOIN_MP_GUI_NAME=yantum-gui
 
 dnl Unless the user specified ARFLAGS, force it to be cr
 dnl This is also the default as-of libtool 2.4.7

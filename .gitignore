@@ -5,15 +5,15 @@
 
 *.exe
 *.pdb
-src/certurium
-src/certuriumd
-src/certurium-cli
-src/certurium-gui
-src/certurium-node
-src/certurium-tx
-src/certurium-util
-src/certurium-chainstate
-src/certurium-wallet
+src/yantum
+src/yantumd
+src/yantum-cli
+src/yantum-gui
+src/yantum-node
+src/yantum-tx
+src/yantum-util
+src/yantum-chainstate
+src/yantum-wallet
 src/test/fuzz/fuzz
 src/test/test_bitcoin
 src/qt/test/test_bitcoin-qt

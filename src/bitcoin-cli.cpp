@@ -144,10 +144,10 @@ static int AppInitRPC(int argc, char* argv[])
             strUsage += FormatParagraph(LicenseInfo());
         } else {
             strUsage += "\n"
-                "Usage:  certurium-cli [options] <command> [params]  Send command to " PACKAGE_NAME "\n"
-                "or:     certurium-cli [options] -named <command> [name=value]...  Send command to " PACKAGE_NAME " (with named arguments)\n"
-                "or:     certurium-cli [options] help                List commands\n"
-                "or:     certurium-cli [options] help <command>      Get help for a command\n";
+                "Usage:  yantum-cli [options] <command> [params]  Send command to " PACKAGE_NAME "\n"
+                "or:     yantum-cli [options] -named <command> [name=value]...  Send command to " PACKAGE_NAME " (with named arguments)\n"
+                "or:     yantum-cli [options] help                List commands\n"
+                "or:     yantum-cli [options] help <command>      Get help for a command\n";
             strUsage += "\n" + gArgs.GetHelpMessage();
         }
 
