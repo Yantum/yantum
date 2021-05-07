@@ -9,4 +9,4 @@ WORKDIR /certurium
 VOLUME /root/.certurium/
 ADD . /certurium
 RUN ./autogen.sh && ./configure --with-gui=no --with-incompatible-bdb --enable-static --disable-shared && make -j4 && cp src/certurium* /usr/local/bin/ && make distclean
-CMD ["certuriumd"]
+CMD ["yantumd"]

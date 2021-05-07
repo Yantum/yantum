@@ -41,7 +41,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     const char* pszTimestamp = "Edward Snowden says he's behind NSA leaks - CNN - June 10 2013";
-    const CScript genesisOutputScript = CScript() << ParseHex("03feeffdf05350f731f093c6e61a78c16d2403d86bcbdf8510f778f01f91ad7b5b") << OP_CHECKSIG;
+    const CScript genesisOutputScript = CScript() << ParseHex("039e3a8579a56b7cb54e337b7c34608fa7bf68793d79d6431c3660666bcb5f1d2b") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -85,26 +85,26 @@ public:
         consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000000000000eeeeeeee");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0xb1700f9b96da798fe02a28b1d05aa30ce8ea80115e4ace9bfdc43e86930ea8ea");
+        consensus.defaultAssumeValid = uint256S("0xa988da6cf4276146d5385f6e8d24b6e5a1d6d1cb84297c27a3c3418c4dc07e6a");
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0xfb;
-        pchMessageStart[1] = 0xc1;
-        pchMessageStart[2] = 0xb8;
-        pchMessageStart[3] = 0xdc;
-        nDefaultPort = 13580;
+        pchMessageStart[0] = 0x85;
+        pchMessageStart[1] = 0xe5;
+        pchMessageStart[2] = 0xce;
+        pchMessageStart[3] = 0xbf;
+        nDefaultPort = 13610;
         nPruneAfterHeight = 100000;
         m_assumed_blockchain_size = 320;
         m_assumed_chain_state_size = 4;
 
-        genesis = CreateGenesisBlock(1585921268, 20253191, 0x1d7fffff, 1, 11922745 * COIN);
+        genesis = CreateGenesisBlock(1620124346, 13149988, 0x1d7fffff, 1, 11896740 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0xb1700f9b96da798fe02a28b1d05aa30ce8ea80115e4ace9bfdc43e86930ea8ea"));
-        assert(genesis.hashMerkleRoot == uint256S("0xd3ac893bf5887a7365bf35d67abcf037faa194aed9f1709e42958933bd8bd70f"));
+        assert(consensus.hashGenesisBlock == uint256S("0xa988da6cf4276146d5385f6e8d24b6e5a1d6d1cb84297c27a3c3418c4dc07e6a"));
+        assert(genesis.hashMerkleRoot == uint256S("0x3ad84bb5c63f344f168aeef2027a226488e1a6da20027aaf1cf0936f209aa8a4"));
 
         // Note that of those which support the service bits prefix, most only support a subset of
         // possible options.

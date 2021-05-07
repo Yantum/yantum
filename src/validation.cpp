@@ -1225,7 +1225,7 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
     if (halvings >= 64)
         return 0;
 
-    CAmount nSubsidy = COIN / 1000;
+    CAmount nSubsidy = COIN / 5000;
     // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
     nSubsidy >>= halvings;
     return nSubsidy;
@@ -1273,20 +1273,33 @@ void CChainState::InitCoinsCache()
 bool CChainState::IsInitialBlockDownload() const
 {
     // Optimization: pre-test latch before taking the lock.
-    if (m_cached_finished_ibd.load(std::memory_order_relaxed))
+    if (m_cached_finished_ibd.load(std::memory_order_relaxed)) 
         return false;
 
     LOCK(cs_main);
-    if (m_cached_finished_ibd.load(std::memory_order_relaxed))
+    if (m_cached_finished_ibd.load(std::memory_order_relaxed)) {
+        printf("1");
         return false;
-    if (fImporting || fReindex)
+    }
+    if (fImporting || fReindex) {
+        printf("2");
+        if(fImporting) printf("fImporting");
         return true;
-    if (m_chain.Tip() == nullptr)
+    }
+    if (m_chain.Tip() == nullptr) {
+        printf("3");
         return true;
-    if (m_chain.Tip()->nChainWork < nMinimumChainWork)
+    }
+    if (m_chain.Tip()->nChainWork < nMinimumChainWork) {
+        //printf(m_chain.Tip()->nChainWork.GetHex().c_str());
+        //printf(nMinimumChainWork.GetHex().c_str());
+        printf("4");
         return true;
-    if (m_chain.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge))
+    }   
+    if (m_chain.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge)) {
+        printf("5");
         return true;
+    }
     LogPrintf("Leaving InitialBlockDownload (latching to false)\n");
     m_cached_finished_ibd.store(true, std::memory_order_relaxed);
     return false;

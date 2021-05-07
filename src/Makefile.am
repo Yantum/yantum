@@ -82,18 +82,18 @@ TESTS =
 BENCHMARKS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += certuriumd
+  bin_PROGRAMS += yantumd
 endif
 
 if BUILD_BITCOIN_CLI
-  bin_PROGRAMS += certurium-cli
+  bin_PROGRAMS += yantum-cli
 endif
 if BUILD_BITCOIN_TX
-  bin_PROGRAMS += certurium-tx
+  bin_PROGRAMS += yantum-tx
 endif
 if ENABLE_WALLET
 if BUILD_BITCOIN_WALLET
-  bin_PROGRAMS += certurium-wallet
+  bin_PROGRAMS += yantum-wallet
 endif
 endif
 
@@ -551,17 +551,17 @@ libbitcoin_cli_a_SOURCES = \
 nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# certuriumd binary #
-certuriumd_SOURCES = bitcoind.cpp
-certuriumd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-certuriumd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-certuriumd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# yantumd binary #
+yantumd_SOURCES = bitcoind.cpp
+yantumd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+yantumd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+yantumd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-certuriumd_SOURCES += bitcoind-res.rc
+yantumd_SOURCES += bitcoind-res.rc
 endif
 
-certuriumd_LDADD = \
+yantumd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_WALLET) \
   $(LIBBITCOIN_COMMON) \
@@ -575,38 +575,38 @@ certuriumd_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-certuriumd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+yantumd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
 # certurium-cli binary #
-certurium_cli_SOURCES = bitcoin-cli.cpp
-certurium_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-certurium_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-certurium_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+yantum_cli_SOURCES = bitcoin-cli.cpp
+yantum_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+yantum_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+yantum_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-certurium_cli_SOURCES += bitcoin-cli-res.rc
+yantum_cli_SOURCES += bitcoin-cli-res.rc
 endif
 
-certurium_cli_LDADD = \
+yantum_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO)
 
-certurium_cli_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+yantum_cli_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
 # certurium-tx binary #
-certurium_tx_SOURCES = bitcoin-tx.cpp
-certurium_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-certurium_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-certurium_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+yantum_tx_SOURCES = bitcoin-tx.cpp
+yantum_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+yantum_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+yantum_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-certurium_tx_SOURCES += bitcoin-tx-res.rc
+yantum_tx_SOURCES += bitcoin-tx-res.rc
 endif
 
-certurium_tx_LDADD = \
+yantum_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -614,20 +614,20 @@ certurium_tx_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-certurium_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+yantum_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 # certurium-wallet binary #
-certurium_wallet_SOURCES = bitcoin-wallet.cpp
-certurium_wallet_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-certurium_wallet_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-certurium_wallet_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+yantum_wallet_SOURCES = bitcoin-wallet.cpp
+yantum_wallet_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+yantum_wallet_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+yantum_wallet_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-certurium_wallet_SOURCES += bitcoin-wallet-res.rc
+yantum_wallet_SOURCES += bitcoin-wallet-res.rc
 endif
 
-certurium_wallet_LDADD = \
+yantum_wallet_LDADD = \
   $(LIBBITCOIN_WALLET_TOOL) \
   $(LIBBITCOIN_WALLET) \
   $(LIBBITCOIN_COMMON) \
@@ -641,7 +641,7 @@ certurium_wallet_LDADD = \
   $(LIBSECP256K1) \
   $(LIBUNIVALUE)
 
-certurium_wallet_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(CRYPTO_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(MINIUPNPC_LIBS) $(ZMQ_LIBS)
+yantum_wallet_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(CRYPTO_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(MINIUPNPC_LIBS) $(ZMQ_LIBS)
 #
 
 # bitcoinconsensus library #
