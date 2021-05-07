@@ -577,7 +577,7 @@ yantumd_LDADD = \
 
 yantumd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
-# certurium-cli binary #
+# yantum-cli binary #
 yantum_cli_SOURCES = bitcoin-cli.cpp
 yantum_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
 yantum_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
@@ -596,7 +596,7 @@ yantum_cli_LDADD = \
 yantum_cli_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# certurium-tx binary #
+# yantum-tx binary #
 yantum_tx_SOURCES = bitcoin-tx.cpp
 yantum_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 yantum_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
@@ -617,7 +617,7 @@ yantum_tx_LDADD = \
 yantum_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
-# certurium-wallet binary #
+# yantum-wallet binary #
 yantum_wallet_SOURCES = bitcoin-wallet.cpp
 yantum_wallet_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 yantum_wallet_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)

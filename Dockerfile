@@ -5,8 +5,8 @@ RUN apt-get update -q && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get autoremove -y && \
     apt-get clean
-WORKDIR /certurium
-VOLUME /root/.certurium/
-ADD . /certurium
-RUN ./autogen.sh && ./configure --with-gui=no --with-incompatible-bdb --enable-static --disable-shared && make -j4 && cp src/certurium* /usr/local/bin/ && make distclean
+WORKDIR /yantum
+VOLUME /root/.yantum/
+ADD . /yantum
+RUN ./autogen.sh && ./configure --with-gui=no --with-incompatible-bdb --enable-static --disable-shared && make -j4 && cp src/yantum* /usr/local/bin/ && make distclean
 CMD ["yantumd"]
