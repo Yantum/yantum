@@ -1273,33 +1273,20 @@ void CChainState::InitCoinsCache()
 bool CChainState::IsInitialBlockDownload() const
 {
     // Optimization: pre-test latch before taking the lock.
-    if (m_cached_finished_ibd.load(std::memory_order_relaxed)) 
+    if (m_cached_finished_ibd.load(std::memory_order_relaxed))
         return false;
 
     LOCK(cs_main);
-    if (m_cached_finished_ibd.load(std::memory_order_relaxed)) {
-        printf("1");
+    if (m_cached_finished_ibd.load(std::memory_order_relaxed))
         return false;
-    }
-    if (fImporting || fReindex) {
-        printf("2");
-        if(fImporting) printf("fImporting");
+    if (fImporting || fReindex)
         return true;
-    }
-    if (m_chain.Tip() == nullptr) {
-        printf("3");
+    if (m_chain.Tip() == nullptr)
         return true;
-    }
-    if (m_chain.Tip()->nChainWork < nMinimumChainWork) {
-        //printf(m_chain.Tip()->nChainWork.GetHex().c_str());
-        //printf(nMinimumChainWork.GetHex().c_str());
-        printf("4");
+    if (m_chain.Tip()->nChainWork < nMinimumChainWork)
         return true;
-    }   
-    if (m_chain.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge)) {
-        printf("5");
+    if (m_chain.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge))
         return true;
-    }
     LogPrintf("Leaving InitialBlockDownload (latching to false)\n");
     m_cached_finished_ibd.store(true, std::memory_order_relaxed);
     return false;
