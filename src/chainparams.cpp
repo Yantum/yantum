@@ -377,7 +377,7 @@ public:
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 60; // one minute
         consensus.nPowTargetSpacing = 60;
-        consensus.checkpointPubKey = "036dd5e5acbb30262b150ecc6cf96aa6631ee2b792f8015fa1cdf0a3bdf16d45ee";
+        consensus.checkpointPubKey = "03c587aed145a401fccdd247210f81c96f8f442cd176e72b3b1998c44e42945321";
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
