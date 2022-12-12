@@ -8,5 +8,5 @@ RUN apt-get update -q && \
 WORKDIR /yantum
 VOLUME /root/.yantum/
 ADD . /yantum
-RUN ./autogen.sh && ./configure --with-gui=no --with-incompatible-bdb --enable-static --disable-shared && make -j4 && cp src/yantum* /usr/local/bin/ && make distclean
+RUN ./autogen.sh && ./configure --with-gui=no --with-incompatible-bdb --enable-static --disable-shared && make -j8 && cp src/yantum* /usr/local/bin/ && make distclean
 CMD ["yantumd"]
