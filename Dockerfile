@@ -1,4 +1,4 @@
-FROM ubuntu:20.10
+FROM ubuntu:22.10
 
 RUN apt-get update -q && \
     apt-get install -qy  git make g++ autoconf libtool pkg-config bsdmainutils libboost-all-dev libssl-dev libevent-dev libdb++-dev && \
@@ -8,5 +8,5 @@ RUN apt-get update -q && \
 WORKDIR /yantum
 VOLUME /root/.yantum/
 ADD . /yantum
-RUN ./autogen.sh && ./configure --with-gui=no --with-incompatible-bdb --enable-static --disable-shared && make -j4 && cp src/yantum* /usr/local/bin/ && make distclean
+RUN ./autogen.sh && ./configure --with-gui=no --with-incompatible-bdb --enable-static --disable-shared && make -j8 && cp src/yantum* /usr/local/bin/ && make distclean
 CMD ["yantumd"]
